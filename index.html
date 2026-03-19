@@ -1,70 +1,83 @@
-<!DO<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rblx Notice</title>
+<title>roblox Notice</title>
 
 <style>
 body{
     margin:0;
-    font-family: Arial, sans-serif;
-    background:#121212;
-    color:#fff;
+    font-family: 'Arial Black', Arial, sans-serif;
+    background:#0f1115;
+    color:white;
 }
 
 /* 上バー */
 .header{
-    background:#1c1c1c;
-    padding:15px;
+    background:#191b1f;
+    padding:14px 20px;
     display:flex;
     align-items:center;
     gap:10px;
-    font-weight:bold;
     font-size:20px;
+    font-weight:bold;
 }
 
-/* ロゴ風 */
+/* 改良ロゴ（SVGで綺麗） */
 .logo{
-    width:24px;
-    height:24px;
-    background:#fff;
-    transform: rotate(15deg);
+    width:26px;
+    height:26px;
 }
 
-/* カード */
+/* 中央 */
 .container{
     display:flex;
     justify-content:center;
     align-items:center;
-    height:80vh;
+    height:85vh;
 }
 
+/* カード */
 .card{
-    background:#1e1e1e;
-    padding:25px;
-    border-radius:12px;
-    max-width:500px;
+    background:#1c1f24;
+    padding:30px;
+    border-radius:14px;
+    width:420px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.6);
     text-align:center;
-    box-shadow:0 0 20px rgba(0,0,0,0.5);
 }
 
-h2{
-    margin-top:0;
+/* タイトル */
+h1{
+    margin:0 0 10px;
+    font-size:22px;
+}
+
+/* 本文 */
+p{
+    color:#cfcfcf;
+    line-height:1.6;
+    white-space:pre-line;
+}
+
+/* ボタン */
+.lang{
+    margin-top:20px;
 }
 
 button{
     margin:5px;
-    padding:10px 14px;
+    padding:8px 12px;
     border:none;
     border-radius:6px;
-    background:#333;
+    background:#2a2d33;
     color:white;
     cursor:pointer;
 }
 
 button:hover{
-    background:#555;
+    background:#3a3f46;
 }
 </style>
 </head>
@@ -72,16 +85,20 @@ button:hover{
 <body>
 
 <div class="header">
-    <div class="logo"></div>
-    Rblx
+    <!-- ちゃんとしたロゴ風（SVG） -->
+    <svg class="logo" viewBox="0 0 100 100">
+        <rect x="20" y="20" width="60" height="60" fill="white" transform="rotate(15 50 50)"/>
+        <rect x="40" y="40" width="20" height="20" fill="#191b1f" transform="rotate(15 50 50)"/>
+    </svg>
+    roblox
 </div>
 
 <div class="container">
     <div class="card">
-        <h2 id="title"></h2>
+        <h1 id="title"></h1>
         <p id="text"></p>
 
-        <div>
+        <div class="lang">
             <button onclick="setLang('ja')">日本語</button>
             <button onclick="setLang('en')">EN</button>
             <button onclick="setLang('ko')">KR</button>
@@ -94,19 +111,19 @@ button:hover{
 const data = {
     ja: {
         title: "お知らせ",
-        text: "Rblxは2026年5月にアプリストアから削除される可能性があります。\n\n遊んでいただきありがとうございます。"
+        text: "robloxは2026年5月にアプリストアから削除される可能性があります。\n\n遊んでいただきありがとうございます。"
     },
     en: {
         title: "Notice",
-        text: "Rblx may be removed from the App Store in May 2026.\n\nThank you for playing."
+        text: "robloxmay be removed from the App Store in May 2026.\n\nThank you for playing."
     },
     ko: {
         title: "공지",
-        text: "Rblx는 2026년 5월 앱스토어에서 삭제될 수 있습니다.\n\n이용해 주셔서 감사합니다."
+        text: "roblox는 2026년 5월 앱스토어에서 삭제될 수 있습니다。\n\n이용해 주셔서 감사합니다。"
     },
     zh: {
         title: "通知",
-        text: "Rblx 可能会在 2026 年 5 月从应用商店下架。\n\n感谢您的游玩。"
+        text: "roblox 可能会在 2026 年 5 月从应用商店下架。\n\n感谢您的游玩。"
     }
 };
 
@@ -115,7 +132,11 @@ function setLang(lang){
     document.getElementById("text").innerText = data[lang].text;
 }
 
-setLang('ja');
+// 自動言語判定
+let lang = navigator.language.startsWith("ja") ? "ja" :
+           navigator.language.startsWith("ko") ? "ko" : "en";
+
+setLang(lang);
 </script>
 
 </body>
