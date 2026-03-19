@@ -1,48 +1,92 @@
-<!DOCTYPE html>
+<!DO<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multi Language Notice</title>
+<title>Rblx Notice</title>
 
 <style>
 body{
-    font-family: sans-serif;
-    text-align:center;
-    padding:40px;
-    background:#111;
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#121212;
     color:#fff;
 }
-.box{
-    background:#222;
-    padding:20px;
-    border-radius:10px;
-    display:inline-block;
-    max-width:500px;
+
+/* 上バー */
+.header{
+    background:#1c1c1c;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:bold;
+    font-size:20px;
 }
+
+/* ロゴ風 */
+.logo{
+    width:24px;
+    height:24px;
+    background:#fff;
+    transform: rotate(15deg);
+}
+
+/* カード */
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:80vh;
+}
+
+.card{
+    background:#1e1e1e;
+    padding:25px;
+    border-radius:12px;
+    max-width:500px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h2{
+    margin-top:0;
+}
+
 button{
     margin:5px;
-    padding:10px 15px;
+    padding:10px 14px;
     border:none;
     border-radius:6px;
+    background:#333;
+    color:white;
     cursor:pointer;
+}
+
+button:hover{
+    background:#555;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-    <h2 id="title"></h2>
-    <p id="text"></p>
+<div class="header">
+    <div class="logo"></div>
+    Rblx
+</div>
 
-    <div>
-        <button onclick="setLang('ja')">日本語</button>
-        <button onclick="setLang('en')">English</button>
-        <button onclick="setLang('ko')">한국어</button>
-        <button onclick="setLang('zh')">中文</button>
-        <button onclick="setLang('es')">Español</button>
-        <button onclick="setLang('fr')">Français</button>
+<div class="container">
+    <div class="card">
+        <h2 id="title"></h2>
+        <p id="text"></p>
+
+        <div>
+            <button onclick="setLang('ja')">日本語</button>
+            <button onclick="setLang('en')">EN</button>
+            <button onclick="setLang('ko')">KR</button>
+            <button onclick="setLang('zh')">CN</button>
+        </div>
     </div>
 </div>
 
@@ -50,27 +94,19 @@ button{
 const data = {
     ja: {
         title: "お知らせ",
-        text: "Robloxは2026年5月にApp Storeから削除されます。これにより、Robloxの管理予算が不十分になる可能性があります。\n\nRobloxで遊んでいただき、ありがとうございます。"
+        text: "Rblxは2026年5月にアプリストアから削除される可能性があります。\n\n遊んでいただきありがとうございます。"
     },
     en: {
         title: "Notice",
-        text: "Roblox will be removed from the App Store in May 2026. This may result in insufficient management budget for Roblox.\n\nThank you for playing Roblox."
+        text: "Rblx may be removed from the App Store in May 2026.\n\nThank you for playing."
     },
     ko: {
         title: "공지",
-        text: "Roblox는 2026년 5월 App Store에서 삭제됩니다. 이로 인해 Roblox의 운영 예산이 부족해질 수 있습니다.\n\nRoblox를 이용해 주셔서 감사합니다."
+        text: "Rblx는 2026년 5월 앱스토어에서 삭제될 수 있습니다.\n\n이용해 주셔서 감사합니다."
     },
     zh: {
         title: "通知",
-        text: "Roblox 将于 2026 年 5 月从 App Store 下架。这可能导致 Roblox 的管理预算不足。\n\n感谢您游玩 Roblox。"
-    },
-    es: {
-        title: "Aviso",
-        text: "Roblox será eliminado de la App Store en mayo de 2026. Esto puede causar falta de presupuesto de gestión.\n\nGracias por jugar Roblox."
-    },
-    fr: {
-        title: "Avis",
-        text: "Roblox sera supprimé de l'App Store en mai 2026. Cela peut entraîner un manque de budget de gestion.\n\nMerci d'avoir joué à Roblox."
+        text: "Rblx 可能会在 2026 年 5 月从应用商店下架。\n\n感谢您的游玩。"
     }
 };
 
@@ -79,7 +115,6 @@ function setLang(lang){
     document.getElementById("text").innerText = data[lang].text;
 }
 
-// 初期表示
 setLang('ja');
 </script>
 
